@@ -1,0 +1,17 @@
+# Ignorar dependências
+node_modules
+
+# Ignorar arquivos de build e cache
+dist
+build
+.next
+.cache
+coverage
+
+# Arquivos de lock dos gerenciadores de pacotes
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Arquivos de log
+*.log

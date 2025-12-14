@@ -1,0 +1,54 @@
+###
+# @name createUser
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+    "name": "Test User"
+}
+
+###
+# @name findUser
+GET http://localhost:3000/users/{{createUser.response.body.user.id}}
+
+###
+# @name userNotFound
+GET http://localhost:3000/users/999
+
+###
+# @name createProperty
+POST http://localhost:3000/properties
+Content-Type: application/json
+
+{
+    "name": "Cabana aconchegante",
+    "description": "Uma cabana nas montanhas.",
+    "maxGuests": 4,
+    "basePricePerNight": 150.0
+}
+
+###
+# @name createBooking
+POST http://localhost:3000/bookings
+Content-Type: application/json
+
+{
+    "propertyId": "{{createProperty.response.body.property.id}}",
+    "guestId": "{{createUser.response.body.user.id}}",
+    "startDate": "2024-12-20",
+    "endDate": "2024-12-25",
+    "guestCount": 2
+}
+
+###
+# @name cancelBooking
+POST http://localhost:3000/bookings/{{createBooking.response.body.booking.id}}/cancel
+Content-Type: application/json
+
+{
+    "propertyId": "{{createProperty.response.body.property.id}}",
+    "guestId": "{{createUser.response.body.user.id}}",
+    "startDate": "2024-12-20",
+    "endDate": "2024-12-25",
+    "guestCount": 2
+}

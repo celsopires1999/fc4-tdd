@@ -1,3 +1,3 @@
 export interface RefundRule {
-  calculateRefund(totalPrice: number): number;
+    calculateRefund(totalPrice: number): number
 }
